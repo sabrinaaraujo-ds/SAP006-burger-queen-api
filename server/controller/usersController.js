@@ -1,8 +1,11 @@
+const { Users } = require('../db/models');
+
 const getUsers = (req, res) => {
-  res.send([{
-    name: 'example',
-    email: 'example@example.com',
-  }]);
+  Users.findAll()
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((error) => console.log(error));
 };
 
 module.exports = { getUsers };
